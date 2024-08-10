@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import ambulanceIconUrl from '../images/ambulance.png';
+import locationIconUrl from '../images/location.png';
 import Booking from './Booking';
 import { motion } from 'framer-motion'; // Import Framer Motion
 
@@ -42,8 +43,17 @@ const LocationAccessPage = () => {
                 }).addTo(mapRef.current);
             }
 
-            // Add user location marker
-            L.marker([location.latitude, location.longitude]).addTo(mapRef.current)
+            // Create a custom icon for the user's location
+            const locationIcon = L.icon({
+                iconUrl: locationIconUrl,
+                iconSize: [32, 32], // Size of the icon
+                iconAnchor: [16, 32], // Point of the icon which will correspond to marker's location
+                popupAnchor: [0, -32] // Point from which the popup should open relative to the iconAnchor
+            });
+
+            // Add user location marker using the custom icon
+            L.marker([location.latitude, location.longitude], { icon: locationIcon })
+                .addTo(mapRef.current)
                 .bindPopup('Your Location')
                 .openPopup();
 
