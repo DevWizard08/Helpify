@@ -19,7 +19,7 @@ const Login = () => {
   const onSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8000/api/auth/login', formData, {
+      const res = await axios.post('https://helpify-backend-7a73.onrender.com/api/auth/login', formData, {
         headers: {
           'Content-Type': 'application/json'
         }
