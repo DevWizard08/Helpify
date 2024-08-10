@@ -20,7 +20,7 @@ const SignUp = () => {
   const onSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://helpify-backend-7a73.onrender.com/auth/signup', formData, {
+      const res = await axios.post('https://helpify-backend-7a73.onrender.com/api/auth/signup', formData, {
         headers: {
           'Content-Type': 'application/json'
         }
